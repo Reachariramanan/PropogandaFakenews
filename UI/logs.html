@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FNP Logs</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  body { margin: 0; }
+  .logbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 10px 16px;
+            border-bottom: 1px solid var(--line, #8884); position: sticky; top: 0; background: var(--bg, inherit); }
+  .logbar select, .logbar input { font: inherit; }
+  #out { margin: 0; padding: 12px 16px; white-space: pre-wrap; word-break: break-word;
+         font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px; line-height: 1.45; }
+  .err { color: var(--FAKE, #c0392b); }
+</style>
+</head>
+<body>
+<div class="logbar">
+  <b>FNP logs</b>
+  <select id="file"></select>
+  <label>lines <input id="lines" type="number" value="200" min="20" max="1000" step="20" style="width:5em"></label>
+  <label><input id="auto" type="checkbox" checked> auto-refresh (5 s)</label>
+  <label><input id="follow" type="checkbox" checked> follow tail</label>
+  <span id="meta" class="muted small"></span>
+</div>
+<pre id="out">loading…</pre>
+<script>
+const $ = s => document.querySelector(s);
+try { const t = localStorage.getItem('fnp-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+let chosen = null;
+async function load() {
+  try {
+    const r = await fetch('api/logs?lines=' + encodeURIComponent($('#lines').value));
+    const d = await r.json();
+    const logs = (d.logs || []).sort((a, b) => b.mtime - a.mtime);
+    if (!logs.length) { $('#out').textContent = 'no logs'; return; }
+    const names = logs.map(l => l.name);
+    if (!chosen || !names.includes(chosen)) chosen = names[0];   // newest by default
+    const sel = $('#file');
+    if (sel.options.length !== names.length || [...sel.options].some((o, i) => o.value !== names[i])) {
+      sel.innerHTML = names.map(n => `<option value="${n}">${n}</option>`).join('');
+    }
+    sel.value = chosen;
+    const l = logs.find(x => x.name === chosen);
+    $('#out').textContent = l.tail.join('\n');
+    $('#meta').textContent = `${(l.size / 1024).toFixed(1)} KB · updated ${new Date(l.mtime * 1000).toLocaleTimeString()}`;
+    if ($('#follow').checked) window.scrollTo(0, document.body.scrollHeight);
+  } catch (e) {
+    $('#out').innerHTML = `<span class="err">${String(e)}</span>`;
+  }
+}
+$('#file').onchange = e => { chosen = e.target.value; load(); };
+$('#lines').onchange = load;
+setInterval(() => { if ($('#auto').checked) load(); }, 5000);
+load();
+</script>
+</body>
+</html>

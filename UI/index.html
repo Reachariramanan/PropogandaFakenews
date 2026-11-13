@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FNP Dashboard</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<header>
+  <div class="brand">FNP <span>fake news / propaganda &middot; hybrid LLM + maths</span></div>
+  <nav id="tabs"></nav>
+  <div class="hdr-right">
+    <span id="live" class="muted"></span>
+    <button id="logsbtn" title="Open logs in a separate window">logs</button>
+    <button id="theme" title="Toggle theme">theme</button>
+  </div>
+</header>
+<main id="view"></main>
+<aside id="drawer" class="hidden"><div class="drawer-head"><b id="drawer-title"></b><button id="drawer-close">close</button></div><div id="drawer-body"></div></aside>
+<script src="assets/md.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

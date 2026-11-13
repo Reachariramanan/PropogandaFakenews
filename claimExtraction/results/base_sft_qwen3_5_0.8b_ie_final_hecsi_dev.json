@@ -1,0 +1,1218 @@
+{
+ "summary": {
+  "n": 150,
+  "json_valid": 1.0,
+  "verbatim": 0.952,
+  "hit_token_cap": 0,
+  "empty_doc_acc": 0.829,
+  "empty_n": 35,
+  "pred_per_doc": 0.14,
+  "gold_per_doc": 0.95,
+  "exact_PRF": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "iou50_PRF": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "preds": [
+  {
+   "doc_id": "hecsi_en_dev_316",
+   "raw": "{\"claims\": [{\"text\": \"Tiffany Dover\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Tiffany Dover is unfortunately dead after the Covid Vaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_257",
+   "raw": "{\"claims\": [{\"text\": \"Austria\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}, {\"text\": \"AstraZeneca\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": \"Austria\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}, {\"claim\": \"AstraZeneca\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [
+    "Austria",
+    "AstraZeneca"
+   ],
+   "gold": [
+    "Austria Suspends AstraZeneca COVID - 19 Vaccine Batch After Death"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_131",
+   "raw": "{\"claims\": [{\"text\": \"U83850335\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_58",
+   "raw": "{\"claims\": [{\"text\": \"U42322572\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U78350722\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"U42322572\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U78350722\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "the vaccine would not get us out of the second wave it made the viewer think that there was no point in getting the vaccine . Now , in his most recent address he appears to be correcting the negative sentiments of his previous address"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_248",
+   "raw": "{\"claims\": [{\"text\": \"FDA\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}, {\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"text\": \"FDA\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}, {\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [],
+   "gold": [
+    "there ? The Food and Drug Administration ( FDA ) is investigating allergic reactions to the Pfizer coronavirus vaccine that were reported in multiple states"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_305",
+   "raw": "{\"claims\": [{\"claim\": \"healthcare provider\", \"type\": \"ORGANIZATION\"}]}\n",
+   "pred": [
+    "healthcare provider"
+   ],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_64",
+   "raw": "{\"claims\": [{\"text\": \"Republicans\", \"type\": \"ORGANIZATION\", \"subtype\": \"political_party\"}], \"claims\": [{\"claim\": [{\"code\": \"01.1\"}], \"type\": \"EVENT\"}]}\n",
+   "pred": [],
+   "gold": [
+    "There's millions of vaccine available , the Republicans won't use them because there waiting for the one they can make money off"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_263",
+   "raw": "{\"claims\": [{\"text\": \"Oxford\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"the goverment\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Oxford vaccine is excellent BUT this is a MASS study , it is good , yet can cause HUGE problems ETHICALLY . The goverment ARE going to cause HUGE problems ETHICALLY with this vaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_69",
+   "raw": "{\"claims\": [{\"text\": \"COVID - 19\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"COVID - 19 Vaccine\", \"type\": \"PRODUCT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "COVID - 19 : 98 % - 99 % survival rate . COVID - 19 Vaccine : Only 93 % - 94 % effective at prohibiting the virus + possible facial paralysis + a syringe full of who knows"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_383",
+   "raw": "{\"claims\": [{\"text\": \"Oxford\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "Vaccine hopes rise amid reports Oxford jab could give ‘ double protection"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_143",
+   "raw": "{\"claims\": [{\"text\": \"COVID19\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Have A #vaccine coming soon"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_44",
+   "raw": "{\"claims\": [{\"text\": \"MHRA\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": \"MHRA\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"claim\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [
+    "MHRA",
+    "Pfizer"
+   ],
+   "gold": [
+    "MHRA had to even do the warnings about reactions from the Pfizer vaccine , which Pfizer never tested for"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_368",
+   "raw": "{\"claims\": [{\"text\": \"U91240684\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "then it wil mean the anti vaccine idiots stop being paranoid & get vaccinated",
+    "The vaccine doesn ’ t alter you dna , doesn ’ t turn you into a magnet or contains a chip"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_135",
+   "raw": "{\"claims\": [{\"text\": \"COVID Vaccine\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_129",
+   "raw": "{\"claims\": [{\"text\": \"Silica dust\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}], \"claims\": []}\n",
+   "pred": [],
+   "gold": [
+    "Wearing a mask to protect your fellow American is Patriotic during these times of COVID - 19 ! Soon there will be a vaccine and treatment . But for those in construction working around respirable Silica dust there is no treatment so take care follow the rules and protect your lungs"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_276",
+   "raw": "{\"claims\": [{\"text\": \"vaccine\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_332",
+   "raw": "{\"claims\": [{\"text\": \"Trump\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}], \"claims\": [{\"claim\": [{\"code\": \"01.1\"}], \"type\": \"EVENT\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Trump's October surprise be the false claim of a miracle vaccine",
+    "reopens schools and the economy 100"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_24",
+   "raw": "{\"claims\": [{\"text\": \"Covid - 19\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "there are a number of vaccines being developed"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_17",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"FDA\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}, {\"text\": \"CDC\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}], \"claims\": [{\"text\": \"FDA\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}, {\"text\": \"CDC\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Pfizer is saying a 3rd vaccine shot is needed after 6 mos",
+    "FDA / CDC are dragging their feet",
+    "everyone is going to be rushing to get it"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_443",
+   "raw": "{\"claims\": [{\"text\": \"Vaccine\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_225",
+   "raw": "{\"claims\": [{\"text\": \"U13934095\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U78784240\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_469",
+   "raw": "{\"claims\": [{\"text\": \"COVID\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "The flu vaccine didn't end the flu"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_26",
+   "raw": "{\"claims\": [{\"text\": \"U40163439\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "96 % of deaths were over 70 years old and most with underline health issues",
+    "Why do you think they want EVERYONE to get the vaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_217",
+   "raw": "{\"claims\": [{\"text\": \"U71210901\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U49922764\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U57253431\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U45839501\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U52218351\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U67725560\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U42279212\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U60626856\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U89219038\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "It's the only way to do science during an overwhelming health emergency"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_118",
+   "raw": "{\"claims\": [{\"text\": \"COVID\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"COVID\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Flu has a vaccine which means without it , deaths would be even higher than listed , making it far more fatal to children than COVID"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_331",
+   "raw": "{\"claims\": [{\"text\": \"vaccination\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "we all have received the mark when we were little . You are not accepted in school , college or work if you haven't been vaccinated for various diseases",
+    "vaccine will cause you to \" worship \" the beast"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_491",
+   "raw": "{\"claims\": [{\"text\": \"CovidVaccine\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_419",
+   "raw": "{\"claims\": [{\"text\": \"hydroxychloroquine\", \"type\": \"PRODUCT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "if covid can successfully be treated with hydroxychloroquine , there would be no need for a vaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_370",
+   "raw": "{\"claims\": [{\"text\": \"U77210428\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U87270404\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"U77210428\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U87270404\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "tax money is subsidizing this windfall for vaccine manufacturers"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_296",
+   "raw": "{\"claims\": [{\"text\": \"Russian\", \"type\": \"LOCATION\", \"subtype\": \"country\"}], \"claims\": []}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_62",
+   "raw": "{\"claims\": [{\"text\": \"U17069210\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U21415554\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U46987169\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U49922764\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "people who have actually had the virus can get it again a few months later",
+    "vaccine going to be effective"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_109",
+   "raw": "{\"claims\": [{\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"HCQ\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [],
+   "gold": [
+    "general public and mds seem happy to poorly tested vaccines"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_366",
+   "raw": "{\"claims\": [{\"text\": \"U15050406\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"Obamacare\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"01.1\"}], \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "We're going to have a vaccine befor election day . Oh , and a healthcare plan to replace Obamacare"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_56",
+   "raw": "{\"claims\": [{\"text\": \"Im\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_200",
+   "raw": "{\"claims\": [{\"claim\": \"U39115796\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"claim\": \"U49922764\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [
+    "U39115796",
+    "U49922764"
+   ],
+   "gold": [
+    "Far worse symptoms than my husband & I had from the actual virus"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_463",
+   "raw": "{\"claims\": [{\"text\": \"Gilead Sciences\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"GlaxoSmithKline\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"Sanofi\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"Trump\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}], \"claims\": [{\"text\": \"Trump\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Big Pharma companies that are front runners for creating the vaccine , which would = hugh $ $ $ . Gilead Sciences , GlaxoSmithKline , Pfizer , Sanofi are among a handful of companies"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_222",
+   "raw": "{\"claims\": [{\"text\": \"U76320831\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_472",
+   "raw": "{\"claims\": [{\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"NIH\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}], \"claims\": [{\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"NIH\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}]}\n",
+   "pred": [],
+   "gold": [
+    "NIH scientists hold patents ( $ $ $ ) for the COVID vaccine by Moderna which is being fast tracked and jumping past animal trials and going straight to human testing"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_137",
+   "raw": "{\"claims\": [{\"text\": \"rabies vaccine\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "they got their pet microchipped with their rabies vaccine so now they think all vaccines do that"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_221",
+   "raw": "{\"claims\": [{\"text\": \"Jesus Christ\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"Trump\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}], \"claims\": [{\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"Trump\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}]}\n",
+   "pred": [],
+   "gold": [
+    "vaccine needs to be frozen during transportation . That \" vaccine \" is a total scam and won't be able to distributed effectively"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_390",
+   "raw": "{\"claims\": [{\"text\": \"U21291501\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Fully vaccinated and microchipped"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_98",
+   "raw": "{\"claims\": [{\"text\": \"U39815826\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U49922764\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U67639672\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_401",
+   "raw": "{\"claims\": [{\"text\": \"U92311698\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"08.3\"}]}, {\"claim\": [{\"code\": \"08.3\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "vaccine with the highest price tag"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_404",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"SARSCov 2\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"SARSCov 2\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Pfizer vaccine does NOT prevent the transmission of SARSCov 2 virus"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_68",
+   "raw": "{\"claims\": [{\"text\": \"Biden\", \"type\": \"PERSON\", \"subtype\": \"head_of_government\"}, {\"text\": \"Rupert Murdoch\", \"type\": \"PERSON\", \"subtype\": \"journalist_analyst\"}, {\"text\": \"Jerry Hall\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}], \"claims\": [{\"text\": \"Biden\", \"type\": \"PERSON\", \"subtype\": \"head_of_government\"}, {\"text\": \"Rupert Murdoch\", \"type\": \"PERSON\", \"subtype\": \"journalist_analyst\"}, {\"text\": \"Jerry Hall\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}]}\n",
+   "pred": [],
+   "gold": [
+    "you and Jerry Hall have been vaccinated"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_266",
+   "raw": "{\"claims\": [{\"text\": \"Australia\", \"type\": \"LOCATION\", \"subtype\": \"country\"}, {\"text\": \"Oxford\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": [{\"code\": \"01.1\"}], \"type\": \"EVENT\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Australia restricts Oxford vaccine over clotting concerns"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_177",
+   "raw": "{\"claims\": [{\"text\": \"U60065850\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U16019314\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U92801609\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"federal government\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}, {\"text\": \"COVID - 19\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "pushing the federal government to end profit - fueled and unnecessary shortages of lifesaving medications , including the COVID - 19 vaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_237",
+   "raw": "{\"claims\": [{\"text\": \"Wimbledon Mosque\", \"type\": \"LOCATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"10.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "Hundreds queue outside Wimbledon Mosque to get their jabs"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_256",
+   "raw": "{\"claims\": [{\"text\": \"U34728517\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U69681812\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U32654258\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "@U34728517 @U69681812 @U32654258 A vaccine by definition is not a cure",
+    "mRNA does not ‘ affect ’ your DNA . Flu is a collection of constantly mutating viruses nothing like Covid . Measles Vac is 99 % effective"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_195",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}], \"type\": \"EVENT\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Pfizer after full AZ vaccination give better immune response than either alone . They ’ re still undergoing studies regarding mixing the two as the initial two shots"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_27",
+   "raw": "{\"claims\": [{\"text\": \"Ian McKellen\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "Sir Ian McKellen receives COVID - 19 vaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_270",
+   "raw": "{\"claims\": [{\"text\": \"Astra\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"Zeneca\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": \"Astra\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"claim\": \"Zeneca\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [
+    "Astra",
+    "Zeneca"
+   ],
+   "gold": [
+    "Astra - Zeneca ’ s pause last week due to one patient ’ s issue"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_312",
+   "raw": "{\"claims\": [{\"text\": \"U25355442\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "This is a common , but incorrect , way to explain away adverse events of vaccination . It is perfectly possible to manufacture an efficacious vaccine that doesn't hurt as much as is being reported"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_151",
+   "raw": "{\"claims\": [{\"text\": \"U20893025\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Then the next year another round of vaccines will come out and the process will be much like the flu shot"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_105",
+   "raw": "{\"claims\": [{\"text\": \"Germany\", \"type\": \"LOCATION\", \"subtype\": \"country\"}, {\"text\": \"EU\", \"type\": \"ORGANIZATION\", \"subtype\": \"intergovernmental_org\"}], \"claims\": [{\"claim\": [{\"code\": \"10.2\"}, {\"code\": \"01.1\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "exporting vaccine to countries that haven't even vaccinated everyone over 80 yet like Germany or any other country"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_108",
+   "raw": "{\"claims\": [{\"text\": \"Old Testament God\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_290",
+   "raw": "{\"claims\": [{\"text\": \"U89502294\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}], \"type\": \"EVENT\"}]}\n",
+   "pred": [],
+   "gold": [
+    "over 65 flu vaccine 4 me was a disaster",
+    "covid - 19 . Targeted the wrong strain",
+    "Losing faith in these vaccines"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_365",
+   "raw": "{\"claims\": [{\"text\": \"military\", \"type\": \"ORGANIZATION\", \"subtype\": \"military_branch\"}], \"claims\": [{\"claim\": [{\"code\": \"08.3\"}], \"type\": \"ORGANIZATION\", \"subtype\": \"military_branch\"}]}\n",
+   "pred": [],
+   "gold": [
+    "vaccine is controversial"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_310",
+   "raw": "{\"claims\": [{\"text\": \"covid\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "The average age of covid victims is above the average life expectancy"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_181",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [
+    "Moderna"
+   ],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_492",
+   "raw": "{\"claims\": [{\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_67",
+   "raw": "{\"claims\": [{\"text\": \"U58106399\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "You ’ re not happy to take the vaccine because it hasn ’ t been trialed ‘ properly ‘ but happy to take a cattle produce that hasn ’ t been through clinical hunan trials"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_100",
+   "raw": "{\"claims\": [{\"text\": \"Swine Flu\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_1",
+   "raw": "{\"claims\": [{\"text\": \"covid vaccine\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_271",
+   "raw": "{\"claims\": [{\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [
+    "Moderna"
+   ],
+   "gold": [
+    "Vaccine rushed to market , perhaps bypassing normal safeguards , is not safe"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_438",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"Sanofi\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"GlaxoSmithKline\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"AstraZenica\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"Sanofi\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"GlaxoSmithKline\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"AstraZenica\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [],
+   "gold": [
+    "given billions of taxpayer $ to Pfizer , Sanofi , GlaxoSmithKline , AstraZenica , ... , to develop a vaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_28",
+   "raw": "{\"claims\": [{\"text\": \"COVID\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "People HAVE gotten COVID by infection more than once",
+    "It remains to be seen how long the effect will last",
+    "if the immunization is temporary it's vitally important to break the chain of contagion of the pandemic"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_161",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": [{\"code\": \"10.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "Shocking 86 % of Children suffered an Adverse Reaction to the Pfizer Covid Vaccine in Clinical Trial"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_336",
+   "raw": "{\"claims\": [{\"text\": \"vaccine\", \"type\": \"PRODUCT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "vaccine that will kill many of us and destroy lives with side effects"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_214",
+   "raw": "{\"claims\": [{\"text\": \"Census2021\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}], \"claims\": []}\n",
+   "pred": [],
+   "gold": [
+    "Got to hand it to the morons out there who don't want to fill out the #Census2021 as they don't want to be tracked by the government",
+    "the covid vaccine does that"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_367",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"BioNTech\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"BioNTech\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_168",
+   "raw": "{\"claims\": [{\"text\": \"Biden\", \"type\": \"PERSON\", \"subtype\": \"head_of_government\"}], \"claims\": [{\"claim\": [{\"code\": \"01.1\"}], \"type\": \"EVENT\"}]}\n",
+   "pred": [],
+   "gold": [
+    "vaccine distribution will ramp up drastically in the next week . Biden has already met with manufacturers",
+    "Feds will provide assistance to states in the need"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_440",
+   "raw": "{\"claims\": [{\"text\": \"COVID\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_207",
+   "raw": "{\"claims\": [{\"text\": \"COVID\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "vaccines take roughly 10 - 15 years to make .. sometimes longer . so how is the COVID vaccine going to be ready in october"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_326",
+   "raw": "{\"claims\": [{\"text\": \"Oxford\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Oxford ’ vaccine has also been ‘ genetically created"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_417",
+   "raw": "{\"claims\": [{\"text\": \"Boris Johnson\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}], \"claims\": [{\"claim\": [{\"code\": \"10.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "Boris Johnson take the vaccine on television"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_265",
+   "raw": "{\"claims\": [{\"text\": \"Oxford\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"AstraZeneca\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"British\", \"type\": \"LOCATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"Oxford and AstraZeneca\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"British\", \"type\": \"LOCATION\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Oxford and AstraZeneca's COVID vaccine trial is put on HOLD as British volunteer has ' serious ' reaction ' that triggered spinal cord infection",
+    "It was an autoimmune REACTION"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_116",
+   "raw": "{\"claims\": [{\"text\": \"Russian\", \"type\": \"LOCATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}]}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_178",
+   "raw": "{\"claims\": [{\"text\": \"U21415554\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U46987169\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U49922764\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "No one should be forced to get a vaccine to have a job , go to school , or otherwise participate in society"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_388",
+   "raw": "{\"claims\": [{\"text\": \"Roald Dahl\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}]}\n",
+   "pred": [],
+   "gold": [
+    "It really is almost a crime to allow your child to go unimmunized"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_342",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"COVID - 19\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "0 % of people who have died of the Pfizer and Moderna have gone on to contract COVID - 19"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_280",
+   "raw": "{\"claims\": [{\"claim\": \"jeremyvine\"}]}\n",
+   "pred": [
+    "jeremyvine"
+   ],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_15",
+   "raw": "{\"claims\": [{\"text\": \"oxford\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"10.2\"}]}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_84",
+   "raw": "{\"claims\": [{\"text\": \"Oakland County\", \"type\": \"LOCATION\", \"subtype\": \"region_province\"}, {\"text\": \"Michigan\", \"type\": \"LOCATION\", \"subtype\": \"region_province\"}], \"claims\": [{\"claims\": [{\"code\": \"10.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "NO coordinated , single access lane + slow response for QUALIFIED VOLUNTEERS"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_188",
+   "raw": "{\"claims\": [{\"text\": \"FDA\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}], \"claims\": [{\"claim\": [{\"code\": \"01.1\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "no testing and get pushed through FDA no matter how many slaughtered by it"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_341",
+   "raw": "{\"claims\": [{\"text\": \"U85321672\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U38346612\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U45331443\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U73235796\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U44978979\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U66358663\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "we're less likely to develop disease & die , & that vac displayed milder symptoms and shed less virus , when infected by vaccinated sterilizing immunity is not always needed to control the spread & severity of disease"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_103",
+   "raw": "{\"claims\": [{\"text\": \"Covid vaccine\", \"type\": \"PRODUCT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "problems with this Covid vaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_147",
+   "raw": "{\"claims\": [{\"text\": \"U59866180\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U92524009\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U29382282\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Vaccine immunity is a practical way forward"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_187",
+   "raw": "{\"claims\": [{\"text\": \"Six Flags Great Escape\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": \"Six Flags Great Escape\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [
+    "Six Flags Great Escape"
+   ],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_320",
+   "raw": "{\"claims\": [{\"text\": \"U14488573\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U12551020\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U23137589\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_493",
+   "raw": "{\"claims\": [{\"text\": \"U55524931\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "vaccine isn't meant to end the pandemic"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_307",
+   "raw": "{\"claims\": [{\"text\": \"COVID\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"Chinese scientists\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"Frankenstein virus\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Science can ’ t fix COVID - 19",
+    "just going to be 1 % of them making a vaccine with a secondary effects . Meanwhile Chinese scientists probably already testing a new Frankenstein virus"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_125",
+   "raw": "{\"claims\": [{\"text\": \"Whitney Webb\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}, {\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"FDA\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}, {\"text\": \"CDER\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}, {\"text\": \"Zoloft\", \"type\": \"PRODUCT\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"Whitney Webb\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}, {\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"FDA\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}, {\"text\": \"CDER\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}, {\"text\": \"Zoloft\", \"type\": \"PRODUCT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Pfizer has a horrible safety track record",
+    "FDA's CDER is former Pfizer VP for Product Safety that covered up dangerous side effects of Pfizer's Zoloft"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_286",
+   "raw": "{\"claims\": [{\"text\": \"U59918591\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U86315666\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "No 87 year old has ever died of natural causes . Gotta be the vaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_127",
+   "raw": "{\"claims\": [{\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "mRNA vaccs is now the selected vaccine , for global distribution Experimental , never before used , rushed though at unprecedented speed & will require at least two doses For a flu like virus with little or no effect on overwhelming majority of \" infected"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_234",
+   "raw": "{\"claims\": [{\"text\": \"U69597616\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"08.3\"}], \"type\": \"EVENT\"}]}\n",
+   "pred": [],
+   "gold": [
+    "mandatory vaccine that would remove God from your DNA permanently"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_226",
+   "raw": "{\"claims\": [{\"text\": \"JohnsonAndJohnson\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": [{\"code\": \"10.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "the country cared about RESPIRATORY THERAPISTS at the beginning of COVID"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_420",
+   "raw": "{\"claims\": [{\"claim\": \"cancer\"}]}\n",
+   "pred": [
+    "cancer"
+   ],
+   "gold": [
+    "prior health complications before getting a cheap vaccine - like cancer or something - how is the vaccine going to react with that"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_22",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Pfizer - the rubbish vaccine . Greatest for the rubbish bin"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_391",
+   "raw": "{\"claims\": [{\"text\": \"Bill Gates\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}], \"claims\": [{\"claim\": [{\"code\": \"10.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "Bill Gates involvement with the Corona vaccine assures many unprotected people"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_260",
+   "raw": "{\"claims\": [{\"text\": \"MRNA\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"10.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "you're ideas about fetal tissue are 98 % false . Actual fetal cells have not been used since the 1970s"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_352",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [
+    "Pfizer"
+   ],
+   "gold": [
+    "aluminium particles were found in the Pfizer vaccine",
+    "anaphylactic reaction in some people who suffer allergies"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_255",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}]}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_451",
+   "raw": "{\"claims\": [{\"claim\": \"U77417434\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"claim\": \"U20206654\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [
+    "U77417434",
+    "U20206654"
+   ],
+   "gold": [
+    "They created a vaccine way too quickly"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_14",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"WSJ\", \"type\": \"ORGANIZATION\", \"subtype\": \"media_outlet\"}], \"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"WSJ\", \"type\": \"ORGANIZATION\", \"subtype\": \"media_outlet\"}]}\n",
+   "pred": [],
+   "gold": [
+    "pandemic profiteers are pushing hard for universal mandate",
+    "Pfizer Forecasts $ 33.5 Billion in Covid - 19 Vaccine Sales - WSJ"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_358",
+   "raw": "{\"claims\": [{\"text\": \"U46987169\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"Bill Gates\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}, {\"text\": \"NWO\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"U46987169\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"Bill Gates\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}, {\"text\": \"NWO\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "agenda of vaccine chips and NWO"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_203",
+   "raw": "{\"claims\": [{\"text\": \"Syahipuma\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}, {\"text\": \"Uganda\", \"type\": \"LOCATION\", \"subtype\": \"country\"}, {\"text\": \"DRC\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"Syahipuma\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}, {\"text\": \"Uganda\", \"type\": \"LOCATION\", \"subtype\": \"country\"}, {\"text\": \"DRC\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_166",
+   "raw": "{\"claims\": [{\"text\": \"covid vaccine\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_165",
+   "raw": "{\"claims\": [{\"text\": \"Johnson & Johnson\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "Johnson & Johnson is paying out $ 3.9 billion because they lied about the safety of their baby powder",
+    "Covid vaccine is pretty safe"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_450",
+   "raw": "{\"claims\": [{\"text\": \"ukpol\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": []}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_429",
+   "raw": "{\"claims\": [{\"text\": \"Gates\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}, {\"text\": \"Corona\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}], \"claims\": [{\"claim\": [{\"code\": \"08.3\"}], \"type\": \"EVENT\"}]}\n",
+   "pred": [],
+   "gold": [
+    "this will certainly combat the conspiracy theory about Gates & Corona & a vaccine to depopulate earth"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_130",
+   "raw": "{\"claims\": [{\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "Moderna shares jump as much as 16 % after company says its coronavirus vaccine trial produced ‘ robust ’ immune response"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_458",
+   "raw": "{\"claims\": [{\"text\": \"U41383351\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U29707453\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U82110567\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"U41383351\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U29707453\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U82110567\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_158",
+   "raw": "{\"claims\": [{\"claim\": \"U62497299\"}]}\n",
+   "pred": [
+    "U62497299"
+   ],
+   "gold": [
+    "As a mother who almost lost her son to vaccine injury"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_138",
+   "raw": "{\"claims\": [{\"text\": \"Covid 19\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "the pharmacist that purposely left out 100s of doses of Covid 19 vaccines is a flat earther and believes there ’ s microchips in the vaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_490",
+   "raw": "{\"claims\": [{\"text\": \"U95671232\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"08.3\"}], \"type\": \"EVENT\"}]}\n",
+   "pred": [],
+   "gold": [
+    "you stopped to think about the long term effects of introducing these ingredients into your #DNA just B / C your government tells you to",
+    "you have no legal recourse for any & all harm done by a #CovidVaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_211",
+   "raw": "{\"claims\": [{\"text\": \"World Cancer Day\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "we are not on the streets advocating for prevention & early detection"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_189",
+   "raw": "{\"claims\": [{\"text\": \"U96257190\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"The View\", \"type\": \"ORGANIZATION\", \"subtype\": \"media_outlet\"}, {\"text\": \"T-Rump\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "contain some sort of microchip"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_479",
+   "raw": "{\"claims\": [{\"text\": \"US\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"Johnson & Johnson\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": [{\"code\": \"01.1\"}], \"type\": \"EVENT\"}]}\n",
+   "pred": [],
+   "gold": [
+    "US STOPS Johnson & Johnson Vaccine Over Blood Clots"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_197",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [
+    "Pfizer"
+   ],
+   "gold": [
+    "all these people probably have no good working immunsystems , so a vaccin like Pfizer might push them over the edge"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_206",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"NHS\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}, {\"text\": \"Britain\", \"type\": \"LOCATION\", \"subtype\": \"country\"}], \"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"NHS\", \"type\": \"ORGANIZATION\", \"subtype\": \"government_body\"}, {\"text\": \"Britain\", \"type\": \"LOCATION\", \"subtype\": \"country\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Pfizer vaccine roll - out as two NHS staff suffer ' anaphylactoid reaction"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_375",
+   "raw": "{\"claims\": [{\"text\": \"Biden\", \"type\": \"PERSON\", \"subtype\": \"head_of_government\"}, {\"text\": \"Democrats\", \"type\": \"ORGANIZATION\", \"subtype\": \"political_party\"}], \"claims\": [{\"text\": \"Biden\", \"type\": \"PERSON\", \"subtype\": \"head_of_government\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_437",
+   "raw": "{\"claims\": [{\"text\": \"Bill Gates\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}, {\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"text\": \"Bill Gates\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}, {\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Bill Gates became involved inthe industry in early 2000 and has shares in Pfizer",
+    "he's behind the IT company"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_239",
+   "raw": "{\"claims\": [{\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": [{\"code\": \"10.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "got sick from the flu shot",
+    "got sick from the Moderna covid shot - felt like a nasty hangover"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_43",
+   "raw": "{\"claims\": [{\"text\": \"U80029342\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U85083443\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U22713087\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "moderna vaccine more likely to make you die of lightning strike"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_434",
+   "raw": "{\"claims\": [{\"text\": \"U55524931\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U74868723\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Everyone I speak to would have vaccine at any time of day or night if it would get the country open again"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_243",
+   "raw": "{\"claims\": [{\"text\": \"U12972416\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U11118853\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U24910536\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U58794199\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U55313324\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Nobody ever said you couldn't catch it once vaccinated",
+    "you become asymptomatic ! You get vaccinated to lessen the severity of the symptoms and to prevent transmission"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_38",
+   "raw": "{\"claims\": [{\"text\": \"U19533228\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U36770714\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"U19533228\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U36770714\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_354",
+   "raw": "{\"claims\": [{\"claim\": \"UNKNOWN\"}]}\n",
+   "pred": [
+    "UNKNOWN"
+   ],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_2",
+   "raw": "{\"claims\": [{\"text\": \"Pope\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"10.2\"}]}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_327",
+   "raw": "{\"claims\": [{\"text\": \"ADE\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "longterm problems unknown , ADE a known potential problem . Also , not likely to prevent transmission of Covid"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_288",
+   "raw": "{\"claims\": [{\"text\": \"U33156734\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U60585102\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U65318444\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U61680543\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "right to choose to get vaccinated"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_53",
+   "raw": "{\"claims\": [{\"claim\": \"19144423\"}]}\n",
+   "pred": [
+    "19144423"
+   ],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_373",
+   "raw": "{\"claims\": [{\"text\": \"U75761806\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "it's experimental , it was made in 9 months compared to a usual 4 years"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_380",
+   "raw": "{\"claims\": [{\"text\": \"COVID\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"01.1\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "A flu shot isn ’ t 100 % effective against the flu the flu",
+    "COVID vaccine is what 95 % if you get both doses"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_480",
+   "raw": "{\"claims\": [{\"text\": \"Powassan\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "New synthetic DNA vaccine designed and tested"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_117",
+   "raw": "{\"claims\": [{\"text\": \"COVID19\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Taking fake vaccine shots by key figured head people on live TV to gain public trust ... scared health care workers"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_333",
+   "raw": "{\"claims\": [{\"text\": \"U97911078\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U53828541\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U16355105\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"U72038578\", \"type\": \"PERSON\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "outlaw the vaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_405",
+   "raw": "{\"claims\": [{\"text\": \"Norway\", \"type\": \"LOCATION\", \"subtype\": \"country\"}, {\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claims\": [{\"code\": \"10.2\"}], \"type\": [{\"code\": \"10.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "AT least 23 people have died in Norway just days after getting the Pfizer coronavirus vaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_93",
+   "raw": "{\"claims\": [{\"text\": \"vaccine\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Those that don't want the vaccine may well catch the virus and may pass it on , but only to those who have also elected not to have the vaccine"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_275",
+   "raw": "{\"claims\": [{\"text\": \"Moderna\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": [{\"code\": \"02.1\"}], \"type\": \"EVENT\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Moderna is an absolute fraud",
+    "There vaccines in clinical trials never worked"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_202",
+   "raw": "{\"claims\": [{\"text\": \"Bill Gates\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "Covid 19 hasn't killed anybody because it's a hoax . But Bill Gates covid vaccine is real and has killed everyone injected with"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_52",
+   "raw": "{\"claims\": [{\"text\": \"Bill Gates\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}, {\"text\": \"SARS\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"Covid - 19\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"Bill Gates\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}, {\"text\": \"SARS\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"Covid - 19\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": [
+    "Bill Gates paid a Chinese lab to take a strain of SARS and modify it to make Covid - 19 . Then heΓÇÖs gonna introduce the ΓÇ £ vaccineΓÇØ for it that will kill MORE ppl then the virus did",
+    "make 200 + BILLION profit from it"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_477",
+   "raw": "{\"claims\": [{\"text\": \"Trump\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}], \"claims\": [{\"text\": \"Trump\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}]}\n",
+   "pred": [],
+   "gold": [
+    "vaccine is poison"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_10",
+   "raw": "{\"claims\": [{\"text\": \"COVID\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_4",
+   "raw": "{\"claims\": [{\"text\": \"Pfizer\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}], \"claims\": [{\"claim\": [{\"code\": \"01.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "Pfizer vaccine ( bad reactions for those with certain allergies"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_264",
+   "raw": "{\"claims\": [{\"text\": \"Beacon\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"claim\": [{\"code\": \"10.2\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "20 teachers getting vaccinated"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_39",
+   "raw": "{\"claims\": [{\"text\": \"Advent Srl\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"Pomezia\", \"type\": \"LOCATION\", \"subtype\": \"city\"}, {\"text\": \"COVID - 19\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}], \"claims\": [{\"text\": \"Advent Srl\", \"type\": \"ORGANIZATION\", \"subtype\": \"company_general\"}, {\"text\": \"Pomezia\", \"type\": \"LOCATION\", \"subtype\": \"city\"}]}\n",
+   "pred": [],
+   "gold": [
+    "it ’ s a vaccine , developed in collaboration with the Italian manufacturer Advent Srl located in Pomezia , which produced the first batch of the COVID - 19 vaccine for clinical testing"
+   ]
+  },
+  {
+   "doc_id": "hecsi_en_dev_154",
+   "raw": "{\"claims\": [{\"text\": \"Covid\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}]}\n",
+   "pred": [],
+   "gold": []
+  },
+  {
+   "doc_id": "hecsi_en_dev_88",
+   "raw": "{\"claims\": [{\"text\": \"Bill Gates\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}, {\"text\": \"covid 19\", \"type\": \"EVENT\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"BirX\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"Fauci\", \"type\": \"ORGANIZATION\", \"subtype\": \"UNKNOWN\"}, {\"text\": \"WHO\", \"type\": \"ORGANIZATION\", \"subtype\": \"intergovernmental_org\"}, {\"text\": \"Neil Ferguson\", \"type\": \"PERSON\", \"subtype\": \"civilian\"}], \"conspiracy\": [{\"conspirators\": [{\"code\": \"01.3\"}], \"conspiracy\": [{\"code\": \"01.3\"}]}]}\n",
+   "pred": [],
+   "gold": [
+    "700000 people would likely die a horrible death from covid 19 vaccines"
+   ]
+  }
+ ]
+}

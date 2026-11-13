@@ -1,0 +1,27 @@
+# generated / large / corpus-derived: never versioned
+build/
+data/
+factchecks/
+
+# python
+__pycache__/
+*.py[cod]
+*.pkl
+
+# logs and test caches
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# realtime cache: customer posts, never versioned (also any other sqlite/db file)
+data/realtime.sqlite*
+data/*.sqlite*
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.env

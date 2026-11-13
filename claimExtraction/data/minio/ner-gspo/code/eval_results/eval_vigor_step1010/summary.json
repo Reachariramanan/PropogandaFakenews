@@ -1,0 +1,13 @@
+{
+  "n": 15,
+  "eval/score": 0.737618768213027,
+  "eval/format": 1.0,
+  "eval/entity_f1": 0.7510844884397005,
+  "eval/subtype": 0.8385163950381342,
+  "eval/topic_f1": 0.49333333333333335,
+  "eval/action_f1": 0.8,
+  "eval/repaired": 0.0,
+  "eval_diag/unparseable": 0.0,
+  "eval_diag/truncated_repaired": 0.0,
+  "eval_diag/hit_token_cap": 0.0
+}

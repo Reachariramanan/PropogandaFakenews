@@ -1,0 +1,82 @@
+# IndicBERT-v3 multi-task NER + topic training defaults
+
+model:
+  name: ai4bharat/IndicBERT-v3-270M
+  trust_remote_code: true
+  torch_dtype: bfloat16
+  # full | freeze_bottom | plug_only
+  train_mode: full
+  # when train_mode=freeze_bottom, train last N backbone layers + plug
+  unfreeze_last_n_layers: 4
+
+plug:
+  # shallow handover: single Linear→GELU→Dropout bottleneck
+  hidden_dim: 256
+  dropout: 0.1
+  use_attention_pool: true
+  use_salience_head: false
+
+loss:
+  lambda_ner: 1.0
+  lambda_topic: 0.5
+  lambda_action: 0.25
+  lambda_salience: 0.1
+  # positive class weight scale for multi-label heads (helps rare codes)
+  topic_pos_weight_cap: 10.0
+  action_pos_weight_cap: 10.0
+
+data:
+  source_jsonl: ../NER_TOPIC_Modelling/data/ner_topic_llm_dataset.jsonl
+  processed_dir: data/processed
+  max_length: 1024
+  stride: 512
+  train_ratio: 0.90
+  val_ratio: 0.05
+  test_ratio: 0.05
+  seed: 42
+  # entity types kept for BIO
+  entity_types:
+    - PERSON
+    - ORGANIZATION
+    - LOCATION
+    - PRODUCT
+    - EVENT
+  # action codes accepted (CAMEO)
+  action_codes: ["13", "14", "15", "16", "17", "18", "19", "20"]
+  min_entity_span_match_rate: 0.0  # set higher after first prep if you want a hard gate
+
+train:
+  output_dir: outputs/indicbert_ner_topic
+  num_epochs: 3
+  per_device_train_batch_size: 8
+  per_device_eval_batch_size: 16
+  gradient_accumulation_steps: 4
+  learning_rate_backbone: 2.0e-5
+  learning_rate_plug: 1.0e-4
+  weight_decay: 0.01
+  warmup_ratio: 0.06
+  max_grad_norm: 1.0
+  bf16: true
+  fp16: false
+  logging_steps: 50
+  eval_steps: 500
+  save_steps: 500
+  save_total_limit: 3
+  seed: 42
+  dataloader_num_workers: 4
+  max_samples: null  # set e.g. 200 for smoke
+  early_stopping_patience: 5
+  # composite = ner_f1 + 0.5 * topic_micro_f1
+  metric_for_best: composite
+
+infer:
+  topic_threshold: 0.5
+  action_threshold: 0.5
+
+mlflow:
+  enabled: true
+  tracking_uri: http://<INTERNAL_IP>:5000
+  experiment_name: indicbert-ner-topic
+  run_name: null  # auto timestamp if null
+  log_models: true
+  log_artifacts: true

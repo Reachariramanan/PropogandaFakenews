@@ -1,0 +1,79 @@
+# Causal generative IE: free-form JSON (entities + events), not locked heads.
+# IndicBERT-v3 is bidirectional and CANNOT autoregressively generate.
+# Use a true causal instruct model (same Gemma-3 family as IndicBERT's base).
+
+model:
+  # Prefer Gemma-3 270M-IT (same lineage as IndicBERT-v3). Falls back if gated.
+  name: google/gemma-3-270m-it
+  # alt: Qwen/Qwen2.5-0.5B-Instruct  (ungated)
+  # alt: google/gemma-3-1b-it
+  trust_remote_code: true
+  torch_dtype: bfloat16
+  # full | lora
+  train_mode: full
+  lora:
+    r: 16
+    alpha: 32
+    dropout: 0.05
+    target_modules: ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+
+data:
+  source_jsonl: ../NER_TOPIC_Modelling/data/ner_topic_llm_dataset.jsonl
+  processed_dir: data/processed_causal
+  # how much of the label JSON to keep (generative target)
+  # full = entities + events with all fields present in source labels
+  target_mode: full
+  max_source_chars: 6000
+  max_target_chars: 8000
+  train_ratio: 0.90
+  val_ratio: 0.05
+  test_ratio: 0.05
+  seed: 42
+  # prompt style
+  system_prompt: >-
+    You are an information extraction model for geopolitical news and social text.
+    Given the document, extract named entities and events. Reply with ONLY a JSON
+    object with keys "entities" and "events". Do not wrap in markdown.
+    Generate as completely as the text supports: entity text/type/subtype/score/
+    normalized/evidence_text, and event actor1/actor2/other_actors/topics/actions/
+    evidence_text/confidence. Prefer rich structure over empty fields when evidence exists.
+  # generation is open — no constrained grammar; schema is soft via SFT examples only
+
+train:
+  output_dir: outputs/causal_ie_gemma270m
+  num_epochs: 2
+  per_device_train_batch_size: 2
+  per_device_eval_batch_size: 2
+  gradient_accumulation_steps: 16
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.03
+  max_grad_norm: 1.0
+  bf16: true
+  fp16: false
+  logging_steps: 20
+  eval_steps: 400
+  save_steps: 400
+  save_total_limit: 3
+  seed: 42
+  dataloader_num_workers: 2
+  max_samples: null
+  max_seq_length: 3072
+  # packing off for variable JSON targets
+  early_stopping_patience: 4
+  gradient_checkpointing: true
+
+generate:
+  max_new_tokens: 2048
+  temperature: 0.2
+  top_p: 0.9
+  do_sample: true
+  # set do_sample false + temperature 0 for greedy
+
+mlflow:
+  enabled: true
+  tracking_uri: http://<INTERNAL_IP>:5000
+  experiment_name: causal-ie-ner-topic
+  run_name: null
+  log_models: false
+  log_artifacts: true

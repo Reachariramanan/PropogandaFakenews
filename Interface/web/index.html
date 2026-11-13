@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en" data-theme="command" data-font="default">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evidence Desk - Fake News Index</title>
+<meta name="description" content="Local database of fact-checked claims, with Claim Check: a two-step test of whether a claim is fake and what propaganda it uses.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f4c5c'/%3E%3Cpath d='M7 9h18v3H7zM7 15h18v3H7zM7 21h11v3H7z' fill='%23eaa43a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+<script>
+/* apply saved preferences before first paint; the page works if storage is unavailable */
+try {
+  var r = document.documentElement, t = localStorage.getItem('fnp-theme'), f = localStorage.getItem('fnp-font');
+  if (t === 'light' || t === 'dark' || t === 'system' || t === 'command') r.setAttribute('data-theme', t);
+  if (f === 'default' || f === 'desk') r.setAttribute('data-font', f);
+} catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="app">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#overview" aria-label="Evidence Desk, go to Overview">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 20 6v5.2c0 5-3.3 8.4-8 10.3-4.7-1.9-8-5.3-8-10.3V6l8-3.5Z"/><path d="M12 6.5v11M8.5 10.2l3.5 2.2 3.5-2.2M8.5 15.7l3.5-2 3.5 2"/></svg></span>
+      <span class="brand-text"><span class="brand-name">Evidence <span>Desk</span></span><span class="brand-sub">Fact-check index &amp; Claim Check</span></span>
+    </a>
+    <div class="nav-label lbl" aria-hidden="true">Workspace</div>
+    <ul class="nav-list">
+        <li><a href="#overview" data-route="overview" data-tip="Overview" id="nav-overview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.2"/></svg><span class="nav-text">Overview</span></a></li>
+        <li><a href="#desk" data-route="desk" data-tip="Desk" id="nav-desk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="17" height="4.5" rx="1"/><rect x="3.5" y="10.5" width="17" height="4.5" rx="1"/><rect x="3.5" y="17" width="10" height="3.5" rx="1"/></svg><span class="nav-text">Desk</span><span class="nav-count" id="nc-gallery"></span></a></li>
+        <li><a href="#evidence" data-route="evidence" data-tip="Evidence Base" id="nav-evidence"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M6.5 13h3l2-4.5 2.5 7 1.8-2.5h1.7"/></svg><span class="nav-text"><span class="lab-full">Evidence Base</span><span class="lab-short" aria-hidden="true">Evidence</span></span></a></li>
+        <li><a href="#triage" data-route="triage" data-tip="Triage" id="nav-triage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16l-6.2 7.4V19l-3.6-1.8v-4.8L4 5Z"/></svg><span class="nav-text">Triage</span></a></li>
+        <li><a href="#check" data-route="check" data-tip="Claim Check" id="nav-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/></svg><span class="nav-text">Claim Check</span></a></li>
+        <li><a href="#lab" data-route="lab" data-tip="Propaganda Lab" id="nav-lab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.3 3.8 8.5s-1.2 6.1-3.8 8.5c-2.6-2.4-3.8-5.3-3.8-8.5S9.4 5.9 12 3.5Z"/></svg><span class="nav-text"><span class="lab-full">Propaganda Lab</span><span class="lab-short" aria-hidden="true">Lab</span></span></a></li>
+        <li><a href="#sources" data-route="sources" data-tip="Sources" id="nav-sources"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg><span class="nav-text">Sources</span><span class="nav-count" id="nc-sources"></span></a></li>
+    </ul>
+    <div class="side-status" id="side-status">
+      <span class="lbl"><span class="dot" id="side-dot"></span>Index</span>
+      <b id="side-total">-</b>
+      <p id="side-note">Loading</p>
+    </div>
+  </nav>
+
+  <div class="stage">
+    <header class="topbar" aria-label="Site bar">
+      <a class="brand brand-top" href="#overview" aria-label="Evidence Desk, go to Overview"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 20 6v5.2c0 5-3.3 8.4-8 10.3-4.7-1.9-8-5.3-8-10.3V6l8-3.5Z"/><path d="M12 6.5v11M8.5 10.2l3.5 2.2 3.5-2.2M8.5 15.7l3.5-2 3.5 2"/></svg></span></a>
+      <div class="gsearch" role="search" aria-label="Search claims">
+        <label class="sr" for="gs-q">Search claims</label>
+        <svg class="gs-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/></svg>
+        <input id="gs-q" type="search" role="combobox" aria-expanded="false" aria-controls="gs-list" aria-autocomplete="list" aria-label="Search claims" autocomplete="off" placeholder="Search claims">
+        <ul class="gs-list" id="gs-list" role="listbox" aria-label="Search results" hidden></ul>
+      </div>
+      <div class="top-actions">
+        <div class="pop-wrap">
+          <button class="top-btn" id="status-btn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="status-pop" aria-label="Data status">
+            <svg class="top-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6M4.5 12v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"/></svg><span class="dot" id="fresh-dot" aria-hidden="true"></span><span class="top-btn-text" id="fresh-text">Data status</span>
+          </button>
+          <div class="pop" id="status-pop" role="dialog" aria-label="Data status" hidden>
+            <h2>Data status</h2>
+            <dl class="kv" id="status-body"><dt>Loading</dt><dd>-</dd></dl>
+          </div>
+        </div>
+        <div class="pop-wrap">
+          <button class="icon-btn" id="help-btn" type="button" aria-label="Help" aria-haspopup="dialog" aria-expanded="false" aria-controls="help-pop">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.3c-.7.3-1 .9-1 1.6M12 16.8v.2"/></svg>
+          </button>
+          <div class="pop" id="help-pop" role="dialog" aria-label="Help" hidden>
+            <h2>Help</h2>
+            <p class="pop-p"><b>Overview</b> shows what is happening now. <b>Desk</b> lists every claim; open one to read the case file. <b>Claim Check</b> tests text you paste: step 1 asks whether it is fake, step 2 names the propaganda techniques it uses. <b>Propaganda Lab</b> maps propaganda signal by country. <b>Evidence Base</b> shows the live posts and articles of the Realtime Database (a separate database, needs a login): Overview counts them, Browse opens each one with every field marked as stored in the database or inferred by FNP (a fast batch pass over all items, and a deep Claim Check verdict that a scheduled analysis adds every few hours; the banner shows the last and next run), <b>Workbench</b> runs Claim Check on up to 25 chosen items and shows the verdict and a bar for each of the 14 propaganda techniques, and <b>Insights</b> describes a selection using only numbers from the database.</p>
+            <p class="pop-p">Terms with a <span class="term-q-demo" aria-hidden="true">?</span> show a plain-language definition when you hover or focus them.</p>
+            <div class="pop-actions"><button type="button" class="btn" id="help-tour">Take the tour</button><button type="button" class="btn ghost" id="help-gloss">Open glossary</button></div>
+          </div>
+        </div>
+        <div class="pop-wrap">
+          <button class="icon-btn" id="settings-btn" type="button" aria-label="Settings" aria-haspopup="dialog" aria-expanded="false" aria-controls="settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.5 5.5l1.9 1.9M16.6 16.6l1.9 1.9M18.5 5.5l-1.9 1.9M7.4 16.6l-1.9 1.9"/></svg>
+          </button>
+          <div class="pop" id="settings" role="dialog" aria-label="Settings" hidden>
+            <h2>Settings</h2>
+            <fieldset>
+              <legend class="lbl">Typeface</legend>
+              <div class="seg fonts">
+                <label><input type="radio" name="s-font" value="default"><span><em aria-hidden="true">Aa</em><small>Default</small></span></label>
+                <label><input type="radio" name="s-font" value="desk"><span><em aria-hidden="true">Aa</em><small>Evidence Desk</small></span></label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend class="lbl">Theme</legend>
+              <div class="seg">
+                <label><input type="radio" name="s-theme" value="system"><span>System</span></label>
+                <label><input type="radio" name="s-theme" value="light"><span>Light</span></label>
+                <label><input type="radio" name="s-theme" value="dark"><span>Dark</span></label>
+              </div>
+              <label class="seg-cmd"><input type="radio" name="s-theme" value="command"><span>Command Center<small>Dark navy control-room look</small></span></label>
+            </fieldset>
+            <p class="hint" id="s-hint">Saved in this browser only.</p>
+          </div>
+        </div>
+        <button class="top-btn cc-theme" id="theme-quick" type="button" aria-label="Theme: Command Center. Switch theme.">
+          <svg class="tq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg><span class="top-btn-text" id="theme-quick-t">Command</span>
+        </button>
+        <div class="cc-clock" aria-hidden="true"><b id="cc-time">00:00:00</b><small><span id="cc-date">00/00/0000</span> UTC</small></div>
+      </div>
+    </header>
+
+    <main id="main" class="content" tabindex="-1" aria-label="Evidence Desk workspace">
+      <div id="banner" class="banner" hidden></div>
+
+      <section id="view-overview" aria-labelledby="ov-h" hidden>
+        <div class="page-head">
+          <div class="ov-map" id="ov-map" aria-hidden="true"></div>
+          <div class="eyebrow lbl">Overview<span class="src-chip fn" title="This page describes the fact-check index. The live posts and articles of the Realtime Database are in the Evidence Base.">Fake News Database</span></div>
+          <h1 id="ov-h">What is happening now</h1>
+          <p class="lede" id="ov-lede">The state of the fact-check index and the Propaganda Lab at a glance.</p>
+        </div>
+        <div class="kpis" id="ov-kpis" aria-label="Key figures"></div>
+        <section class="panel ov-panel ov-risk" aria-labelledby="ov-risk-h">
+          <header class="ov-ph has-ico"><span class="ph-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21.5 20h-19L12 3.5Z"/><path d="M12 10v4.5M12 17.2v.1"/></svg></span><h2 id="ov-risk-h" class="panel-title">Highest-risk claims this week</h2><p class="ov-sub" id="ov-risk-sub">Fact-checked claims with the highest plausibility score of being fake or misleading.</p><a class="btn sm ov-viewall" href="#desk">View all claims<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></header>
+          <div id="ov-risk" class="risk-grid"><p class="note">Loading</p></div>
+        </section>
+        <div class="ov-grid">
+          <section class="panel ov-panel" aria-labelledby="ov-trend-h">
+            <header class="ov-ph has-ico"><span class="ph-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg></span><h2 id="ov-trend-h" class="panel-title">Last 30 days by verdict</h2><p class="ov-sub" id="ov-trend-sub">Fact-checks published in each 5-day period, split by verdict.</p></header>
+            <div id="ov-trend"><p class="note">Loading</p></div>
+          </section>
+          <section class="panel ov-panel" aria-labelledby="ov-mix-h">
+            <header class="ov-ph has-ico"><span class="ph-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12.5 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></span><h2 id="ov-mix-h" class="panel-title">Verdict mix</h2><p class="ov-sub">How every indexed item is rated. Select a verdict to open it in the Desk.</p></header>
+            <div id="ov-mix"><p class="note">Loading</p></div>
+          </section>
+          <section class="panel ov-panel" aria-labelledby="ov-lang-h">
+            <header class="ov-ph has-ico"><span class="ph-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M8.5 4v2M6 6c.5 3.5 3 6 6.5 7.5M12 6c-.5 3-3 6-7 8"/><path d="m13 20 4-9 4 9M14.5 17h5"/></svg></span><h2 id="ov-lang-h" class="panel-title">Top languages</h2><p class="ov-sub">Languages the indexed claims are written in. Select one to open it in the Desk.</p></header>
+            <div id="ov-lang"><p class="note">Loading</p></div>
+          </section>
+          <section class="panel ov-panel" aria-labelledby="ov-lab-h">
+            <header class="ov-ph has-ico"><span class="ph-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.3 3.8 8.5s-1.2 6.1-3.8 8.5c-2.6-2.4-3.8-5.3-3.8-8.5S9.4 5.9 12 3.5Z"/></svg></span><h2 id="ov-lab-h" class="panel-title">Propaganda Lab</h2><p class="ov-sub" id="ov-lab-sub">Countries where posts carry propaganda techniques most often, compared after adjusting for post length.</p></header>
+            <div id="ov-lab"><p class="note">Loading</p></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="view-gallery" class="view-desk" aria-labelledby="desk-h" hidden>
+        <div class="desk" id="desk" data-pane="list">
+          <div class="desk-list" id="desk-list" tabindex="-1">
+            <div class="dl-head" id="dl-head">
+              <h1 class="sr" id="desk-h">Desk: claims</h1>
+              <div class="dl-line">
+                <div class="dl-q" role="search" aria-label="Search the claim list">
+                  <label class="sr" for="f-q">Search the claim list</label>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/></svg>
+                  <input type="search" id="f-q" placeholder="Search claims" autocomplete="off">
+                </div>
+                <button type="button" class="more-btn" id="more-btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="more-pop">More</button>
+              </div>
+              <div class="vchips" id="vchips" role="group" aria-label="Filter by verdict. Select several to combine."></div>
+              <div class="dl-selects">
+                <label class="f"><span class="sr">Language</span><select id="f-lang"><option value="">All languages</option></select></label>
+                <label class="f"><span class="sr">Source</span><select id="f-site"><option value="">All sources</option></select></label>
+                <label class="f"><span class="sr">Sort</span><select id="f-sort"><option value="plaus">Top score</option><option value="date">Newest first</option></select></label>
+              </div>
+              <div class="dl-active"><span class="dl-count" id="dl-count" role="status" aria-live="polite">Loading</span><span class="dl-fchips" id="dl-active"></span><span class="src-chip fn" title="These claims come from the fact-check index. The live posts and articles of the Realtime Database are in the Evidence Base.">Fake News Database</span></div>
+              <div class="more-pop" id="more-pop" role="dialog" aria-label="More filters" hidden>
+                <h2>More filters</h2>
+                <div class="more-grid">
+                  <label class="f"><span>Country</span><select id="f-country"><option value="">All countries</option></select></label>
+                  <label class="f"><span>Source type</span><select id="f-tier"><option value="">All source types</option></select></label>
+                  <label class="f"><span>Channel</span><select id="f-channel"><option value="">All channels</option></select></label>
+                  <span></span>
+                  <label class="f"><span>From</span><input type="date" id="f-from"></label>
+                  <label class="f"><span>To</span><input type="date" id="f-to"></label>
+                  <label class="f f-wide"><span>Minimum score <output id="o-min">0.00</output></span><input type="range" id="f-min" min="0" max="1" step="0.05" value="0"></label>
+                </div>
+                <div class="more-foot"><button type="button" class="btn ghost" id="more-reset">Reset all filters</button></div>
+              </div>
+            </div>
+            <ul class="rows" id="rows" role="listbox" aria-label="Claims"></ul>
+            <div class="rows-empty" id="rows-empty" hidden></div>
+            <div class="rows-foot" id="rows-foot" hidden></div>
+          </div>
+          <section class="desk-detail" id="desk-detail" aria-label="Case file" tabindex="-1">
+            <div class="guide" id="case-empty">
+              <div class="eyebrow lbl">Case file</div>
+              <h2>How to read a case file</h2>
+              <p class="guide-lede">Select a claim in the list to open its case file here. Use <kbd>j</kbd> and <kbd>k</kbd> or the arrow keys to move through the list and Enter to open. Each file has the same sections, in this order.</p>
+              <ol class="guide-steps">
+                <li><b>Verdict and score.</b> The fact-checker&rsquo;s rating and the <span class="guide-term">plausibility score</span> (0 to 1) that the claim is fake or misleading, with how it was calculated.</li>
+                <li><b>Why.</b> Which other fact-checkers agree, and how many independent sources rated it.</li>
+                <li><b>Evidence.</b> The nearest earlier fact-checks, each with its similarity to this claim.</li>
+                <li><b>Original text.</b> An excerpt of the article or post that was checked.</li>
+                <li><b>Signals.</b> Wording cues such as capitals, exclamations and sensational terms. They describe style, not truth.</li>
+                <li><b>Links.</b> The original article or post.</li>
+              </ol>
+              <p class="note">Scores are a triage aid. Always read the fact-checker&rsquo;s own article before acting.</p>
+            </div>
+            <div id="case-body" hidden></div>
+          </section>
+        </div>
+        <div class="sr" id="desk-live" aria-live="polite"></div>
+      </section>
+
+      <section id="view-check" class="view-desk" aria-labelledby="det-h" hidden>
+        <div class="desk" id="det" data-pane="list">
+          <div class="desk-list" id="det-list" tabindex="-1">
+            <div class="dl-head flat">
+              <h1 class="dl-h" id="det-h">Claim Check</h1>
+              <p class="dl-sub">Paste a claim, headline or post. Step 1 asks whether it is fake; step 2 names the propaganda techniques in its wording.</p>
+              <form id="check-form" class="check det-form" novalidate>
+                <label for="check-text" class="sr">Claim text</label>
+                <textarea id="check-text" rows="4" maxlength="5000" placeholder="Paste the text to examine"></textarea>
+                <p class="det-msg" id="det-msg" role="alert"></p>
+                <div class="det-row">
+                  <button class="btn" type="submit" id="check-go">Check claim</button>
+                  <span class="det-hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd> to check</span>
+                  <span class="count" id="check-count">0 / 5000</span>
+                </div>
+              </form>
+              <div class="exs" id="det-examples">
+                <p class="ex-label" id="ex-cap"></p>
+                <div class="ex-list" id="ex-list" aria-busy="false"></div>
+                <div class="ex-foot">
+                  <button type="button" class="btn ghost sm" id="ex-refresh" aria-label="Show different examples">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4M4 5v4h4M4 13a8 8 0 0 0 14.5 4M20 19v-4h-4"/></svg>
+                    <span class="spin" aria-hidden="true" hidden></span>
+                    <span id="ex-refresh-t">Refresh examples</span>
+                  </button>
+                  <span class="ex-hint">Select an example to fill the box, select it again to check it.</span>
+                </div>
+              </div>
+            </div>
+            <h2 class="dl-sec">Your checks <small id="det-n"></small></h2>
+            <p class="hist-empty" id="det-hist-empty">Claims you check appear here, newest first, with the verdict, its score and what step 2 found. They are kept in this browser tab only and are lost when you reload.</p>
+            <ul class="rows" id="det-rows" role="listbox" aria-label="Your checks" hidden></ul>
+          </div>
+          <section class="desk-detail" id="det-detail" aria-label="Claim Check result" tabindex="-1">
+            <div class="guide" id="det-empty">
+              <div class="eyebrow lbl">Result</div>
+              <h2>No claim checked yet</h2>
+              <p class="guide-lede">Paste a claim on the left, or pick an example, and choose Check claim. The result opens here in two steps.</p>
+              <ol class="guide-steps">
+                <li><b>Step 1: Is it fake?</b> Appears at once from the fact-check index, with a <span class="guide-term">plausibility score</span> and the nearest fact-checks. A verdict engine then adds its own opinion.</li>
+                <li><b>Step 2: What kind of propaganda?</b> Always shown, whether or not the claim looks fake: a probability bar for each of the 14 techniques, and the wording highlighted and labelled by technique.</li>
+                <li><b>How we decided.</b> Models, timings and the caveats, in a panel you can open.</li>
+              </ol>
+              <p class="note">The first check of a new claim takes 20 to 35 seconds because the verdict engine reads it; repeats are instant. If nothing in the index is close, you get the engine's estimate, labelled as such.</p>
+            </div>
+            <div id="det-body" hidden>
+              <article class="case cc" aria-labelledby="case-title">
+                <div class="cc-slot" id="cc-bar"></div>
+                <div class="case-in">
+                  <div id="cc-stepper" aria-live="polite"></div>
+                  <div id="cc-notice"></div>
+                  <div id="cc-s1"></div>
+                  <div id="cc-s2"></div>
+                  <div id="cc-how"></div>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+        <div class="sr" id="det-live" aria-live="polite"></div>
+      </section>
+
+      <section id="view-sources" aria-labelledby="src-h" hidden>
+        <div class="page-head">
+          <div class="eyebrow lbl">Sources<span class="src-chip fn" title="This page describes the fact-check index. The live posts and articles of the Realtime Database are in the Evidence Base.">Fake News Database</span></div>
+          <h1 id="src-h">What is in the database</h1>
+          <p class="lede">Counts by source, how each source rates what it covers, the score distribution and publication dates.</p>
+        </div>
+        <div id="tiles" class="tiles" aria-label="Key figures"></div>
+        <div class="panels">
+          <figure class="panel wide"><figcaption class="ov-ph has-ico"><span class="ph-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg></span><h2 class="panel-title">Items per source</h2><span class="ov-sub">How many items each source contributes, split by verdict. Bar length is to scale on the item-count axis.</span></figcaption><div id="ch-sites" class="chart"></div><div id="lg-verdict" class="legend"></div></figure>
+          <figure class="panel"><figcaption class="ov-ph has-ico"><span class="ph-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h8l8 8-8 8-8-8V4Z"/><circle cx="8.5" cy="8.5" r="1.2"/></svg></span><h2 class="panel-title">Plausibility score distribution</h2><span class="ov-sub">Items per 0.1 score band. Dashed lines mark 0.5 and 0.8, where the colour changes.</span></figcaption><div id="ch-hist" class="chart"></div><div id="lg-hist" class="legend"></div></figure>
+          <figure class="panel"><figcaption class="ov-ph has-ico"><span class="ph-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14" rx="1.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><h2 class="panel-title">Items by publication month</h2><span class="ov-sub">One bar per calendar month, placed by publication date.</span></figcaption><div id="ch-months" class="chart"></div></figure>
+        </div>
+      </section>
+
+      <section id="view-proplab" class="view-desk" aria-labelledby="lab-h" hidden>
+        <div id="pl-empty" class="empty-state lab-empty" hidden></div>
+        <div id="pl-app" class="lab" data-sel="0" hidden>
+          <div class="lab-list" id="lab-list" tabindex="-1">
+            <div class="dl-head">
+              <h1 class="dl-h" id="lab-h">Propaganda Lab</h1>
+              <p class="dl-sub" id="pl-list-sub">Countries ranked by the metric you choose. Select one to open its file.</p>
+              <div class="dl-line">
+                <div class="dl-q" role="search" aria-label="Search countries">
+                  <label class="sr" for="pl-find">Search countries</label>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/></svg>
+                  <input type="search" id="pl-find" placeholder="Search countries" autocomplete="off">
+                </div>
+              </div>
+              <div class="lab-sortline">
+                <label class="f"><span class="sr">Sort countries by</span><select id="pl-sort"></select></label>
+                <button type="button" class="more-btn" id="pl-dir" aria-label="Reverse the sort order"></button>
+              </div>
+              <p class="dl-count" id="pl-count" role="status" aria-live="polite"></p>
+            </div>
+            <ul class="rows lb-rows" id="pl-board" role="listbox" aria-label="Countries"></ul>
+          </div>
+          <div class="lab-main" id="lab-main">
+            <div class="lab-stage" id="lab-stage">
+              <form class="lab-tools" id="pl-controls" autocomplete="off" onsubmit="return false" aria-label="Map controls">
+                <div class="lab-grp"><span class="lbl" id="pl-l-view">View</span><div class="seg" role="radiogroup" aria-labelledby="pl-l-view">
+                  <label><input type="radio" name="pl-view" value="map"><span>Map</span></label><label><input type="radio" name="pl-view" value="heat"><span>Heatmap</span></label></div></div>
+                <div class="lab-grp"><span class="lbl" id="pl-l-metric">Metric <span id="pl-metric-term" class="pl-mterm"></span></span><div class="seg" role="radiogroup" aria-labelledby="pl-l-metric">
+                  <label><input type="radio" name="pl-metric" value="lift"><span>Lift</span></label><label><input type="radio" name="pl-metric" value="rate"><span>Rate</span></label><label><input type="radio" name="pl-metric" value="volume"><span>Volume</span></label><label><input type="radio" name="pl-metric" value="technique"><span>Technique</span></label></div></div>
+                <div class="lab-grp pl-tech" hidden><span class="lbl" id="pl-l-tech">Technique <span id="pl-tech-term" class="pl-mterm"></span></span><select id="pl-tech" aria-labelledby="pl-l-tech"></select></div>
+                <div class="pop-wrap lab-filt">
+                  <button type="button" class="more-btn lab-filt-btn" id="pl-filters-btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="pl-filters"></button>
+                  <div class="pop lab-filters" id="pl-filters" role="dialog" aria-label="Filters" hidden>
+                    <h2>Filters</h2>
+                    <div class="lab-fgrp"><span class="lbl" id="pl-l-mode">Country attribution</span><div class="seg" role="radiogroup" aria-labelledby="pl-l-mode">
+                      <label><input type="radio" name="pl-mode" value="about"><span>Mentioned</span></label><label><input type="radio" name="pl-mode" value="origin"><span>Posted from</span></label></div>
+                      <p class="hint">Mentioned: countries named in the post. Posted from: where the channel or outlet is based.</p></div>
+                    <div class="lab-fgrp"><span class="lbl" id="pl-l-layer">Layer</span><div class="seg" role="radiogroup" aria-labelledby="pl-l-layer">
+                      <label><input type="radio" name="pl-layer" value="signal"><span>Propaganda signal</span></label><label><input type="radio" name="pl-layer" value="fake"><span>Fake / misleading</span></label></div>
+                      <p class="hint">Fake / misleading counts posts that closely match a debunked claim. Lift and technique apply to the signal layer only.</p></div>
+                    <div class="lab-fgrp"><span class="lbl" id="pl-l-window">Time window</span><div class="seg" role="radiogroup" aria-labelledby="pl-l-window">
+                      <label><input type="radio" name="pl-window" value="7d"><span>7 days</span></label><label><input type="radio" name="pl-window" value="30d"><span>30 days</span></label><label><input type="radio" name="pl-window" value="all"><span>All time</span></label></div>
+                      <p class="hint">Counted back from the date the data runs through.</p></div>
+                    <div class="lab-fgrp"><span class="lbl" id="pl-l-source">Source</span><div class="seg" role="radiogroup" aria-labelledby="pl-l-source">
+                      <label><input type="radio" name="pl-source" value="social"><span>Social</span></label><label><input type="radio" name="pl-source" value="news"><span>News</span></label><label><input type="radio" name="pl-source" value="all"><span>All</span></label></div>
+                      <p class="hint" id="pl-news-note"></p></div>
+                  </div>
+                </div>
+              </form>
+              <div class="lab-meta">
+                <div class="lab-chips" id="pl-chips" role="group" aria-label="Active filters"></div>
+              </div>
+              <p class="note pl-ctl-note" id="pl-ctl-note" aria-live="polite"></p>
+              <div class="lab-top" id="lab-top">
+                <section class="panel pl-how" id="pl-how" aria-labelledby="pl-how-h">
+                  <div class="pl-how-head"><h2 id="pl-how-h" class="panel-title">How to read this</h2>
+                    <button type="button" class="link-btn" id="pl-how-toggle" aria-expanded="true" aria-controls="pl-how-body">Hide</button></div>
+                  <div id="pl-how-body"></div>
+                </section>
+                <div class="pl-kpis" id="pl-kpis" aria-label="Figures for this view"></div>
+              </div>
+              <section class="panel pl-viz" id="pl-viz" aria-labelledby="pl-viz-h">
+                <header class="ov-ph"><h2 class="panel-title" id="pl-viz-h">Lift by country</h2><p class="ov-sub" id="pl-viz-sub"></p></header>
+                <div id="pl-map-wrap" class="pl-map-wrap"><div class="pl-map" id="pl-map"></div><div class="pl-tip" id="pl-tip" role="tooltip" hidden></div></div>
+                <div class="pl-heat-wrap" id="pl-heat" hidden></div>
+                <div class="pl-legend" id="pl-legend"></div>
+                <p class="note" id="pl-viz-note"></p>
+                <div class="pl-fresh" id="pl-fresh" aria-live="polite"></div>
+              </section>
+            </div>
+            <aside class="lab-country" id="pl-country" aria-label="Country file" tabindex="-1"></aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-evidence" class="view-ev" aria-labelledby="ev-h" hidden>
+        <div class="ev-top" id="ev-top">
+          <div class="ev-titlerow">
+            <h1 id="ev-h">Evidence Base</h1>
+            <nav class="ev-tabs" aria-label="Evidence Base sections">
+              <a class="ev-tab" id="evt-overview" href="#evidence/overview">Overview</a>
+              <a class="ev-tab" id="evt-browse" href="#evidence/browse">Browse</a>
+              <a class="ev-tab" id="evt-workbench" href="#evidence/workbench">Workbench</a>
+              <a class="ev-tab" id="evt-insights" href="#evidence/insights">Insights</a>
+            </nav>
+          </div>
+          <div class="ev-src" id="ev-src" role="status" aria-live="polite"><span class="src-chip rt">Realtime Database</span><span class="ev-src-t">Loading status</span></div>
+        </div>
+        <div class="ev-main" id="ev-main" tabindex="-1">
+          <div class="ev-notice" id="ev-notice" hidden></div>
+          <div class="ev-ov" id="ev-overview" hidden></div>
+          <div class="ev-br" id="ev-browse" hidden></div>
+          <div class="ev-wb" id="ev-workbench" hidden></div>
+          <div class="ev-ins" id="ev-insights" hidden></div>
+        </div>
+      </section>
+
+      <section id="view-triage" class="view-ev view-tr" aria-labelledby="tr-h" hidden>
+        <div class="ev-top tr-head" id="tr-top">
+          <div class="ev-titlerow">
+            <h1 id="tr-h">Triage</h1>
+            <div class="tr-seg" id="tr-seg" role="group" aria-label="Triage source">
+              <button type="button" data-src="fnp" aria-pressed="true">FNP triage export</button>
+              <button type="button" data-src="realtime" aria-pressed="false">Realtime Database queue</button>
+            </div>
+            <div class="ev-src" id="tr-src" role="status" aria-live="polite"><span class="src-chip rt">FNP triage export</span><span class="ev-src-t">Loading</span></div>
+          </div>
+          <div class="tr-line"><div class="tr-banner" id="tr-banner" role="note"></div>
+          <details class="tr-how" id="tr-how"><summary>How the tiers are decided</summary></details></div>
+          <div class="tr-kpis" id="tr-kpis" aria-label="Triage summary"></div>
+        </div>
+        <div class="ev-main" id="tr-main" tabindex="-1">
+          <div class="ev-notice" id="tr-notice" hidden></div>
+          <div class="ev-br tr-br" id="tr-browse"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="foot" aria-label="Index status"><span id="foot-meta">Loading</span></footer>
+  </div>
+</div>
+
+<div class="term-tip" id="term-tip" role="tooltip" hidden></div>
+<div class="sr" id="route-live" aria-live="polite"></div>
+<script src="labels.js"></script>
+<script src="pure.js"></script>
+<script src="shell.js"></script>
+<script src="proplab.js"></script>
+<script src="app.js"></script>
+<script src="case.js"></script>
+<script src="desk.js"></script>
+<script src="claimcheck.js"></script>
+<script src="overview.js"></script>
+<script src="evidence.js"></script>
+<script src="workbench.js"></script>
+<script src="triage.js"></script>
+<script src="tour.js"></script>
+<script>window.Shell.start();</script>
+</body>
+</html>

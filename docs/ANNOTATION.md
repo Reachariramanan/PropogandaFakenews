@@ -1,0 +1,72 @@
+# Annotation tool (claims + propaganda)
+
+Human labels for **claim extraction** (span, form of claim, check-worthiness) and **propaganda** (span, one or more of the 14 PTC techniques), collected from items pulled incrementally from the news and social DBs, stored in a dedicated PostgreSQL database, and exported as versioned training sets.
+
+## Run order
+```
+.venv/bin/python scripts/27_provision_annotation_db.py --apply   # once: role fnp_annot + database fnp_annotation (writes FNP_ANNOT_DB_* to .env)
+.venv/bin/python -m fnp.annotate.migrate --apply                 # schema `annot` + seeded taxonomies
+.venv/bin/python -m fnp.annotate.ingest --mode newest --per-source 60 --apply
+.venv/bin/python -m fnp.annotate.ingest --mode backfill --per-source 60 --since 2025-01-01 --apply   # historical random
+.venv/bin/python -m fnp.annotate.preannotate --limit 200 --apply # encoder techniques + Gemma claims -> suggestions
+.venv/bin/python scripts/31_annot_users.py create alice --role admin   # first admin (prompts for a password)
+.venv/bin/python scripts/29_annot_server.py --port 8890
+.venv/bin/python scripts/30_annot_export.py --kind claims --version claims_v1 --apply
+```
+Everything is a dry run without `--apply`. Build the pool to the 50k target with `ingest --fill-to 60000 --apply` (or the **Admin > Data > Fill pool** button); pre-annotate with the **Pre-annotate** button / CLI. The dashboard has an **Annotate** tab that links to the server.
+
+## Accounts, batches and the 50k target
+* **Login**: username + password (scrypt hashes, random bearer-token sessions, 12 h rolling expiry, 5 wrong passwords lock the account for 10 min, every attempt in `annot.login_event`). Admins create users in **Admin > Users** (a random password is shown once, the user must replace it at first sign-in) or with `scripts/31_annot_users.py`. The server speaks plain HTTP: put it behind HTTPS if the network is not trusted, because passwords travel in the clear otherwise.
+* **Batches**: every annotator works in a batch of `ann_batch_size` (250) items, reserved to them when the batch is built. The moment the last item of a batch is finished (submitted or skipped) the next 250 are added. Annotators can only open items of their own batch. An admin can set a per-user batch size, return a user's unopened items to the pool, or disable an account (which does the same).
+* **Pool**: only English (90%) and Hindi (10%) are ingested and served (`ann_share_*`; other languages are 0 because annotators may not read them). Hindi supply in the sources is limited (a few thousand snapchat/X/WhatsApp/Facebook rows plus a few percent of Telegram/Twitter).
+* **Balanced selection** (`fnp/annotate/batching.py`): each batch is stratified source -> language -> month (least-covered cell first), then inside each cell the candidate with the biggest *class deficit* wins: models' predicted classes (encoder techniques, Gemma claim types, from `annot.suggestion`) scored against the per-class target (`target_items * (1 - ann_target_neg_frac) / n_classes` finished items; OTHER / UNCLEAR have no target), plus a deficit for explicit none labels. Items a model has not yet seen score neutral, so **pre-annotate the pool** or the balancing has nothing to steer by (Admin > Coverage warns below 50%). Predictions steer selection only: they are never shown on blind items.
+* **Target**: `ann_target_items` (50,000) *fully annotated items per task*; every item gets both layers, so claims and propaganda reach the target together. Check the class counts in **Admin > Coverage**; a class the corpus rarely contains will stay behind, the table shows which.
+* **Monitoring** (**Admin > Team**, click a user): sign-ins, session lengths, **active work minutes** (a minute counts once if the browser reported input within `ann_idle_seconds`=120 s, or the user saved a label; several tabs never double count), items finished (today / period / total), spans, none labels, skips and reasons, items per active hour, current batch, daily history, class mix, login events. Days are bucketed in `FNP_ANNOT_TZ` (default Asia/Kolkata). Active minutes slightly over-count (an idle gap shorter than 2 min still counts), so treat them as an upper bound on hands-on time.
+
+## Data sources (always read-only)
+Source sessions are opened `READ ONLY` with a statement timeout; nothing here writes to `shaktidb_news` / `shaktidb_social` (and the existing `Annotator_tool` database is not touched). `NEWS_DB_*` / `SOCIAL_DB_*` come from `.env`. Per-source column maps are in `fnp/annotate/sources.py` (news: `raw.scraped_articles_trusted`; social: 12 platform tables plus three YouTube sources).
+
+**YouTube** (`youtube_comment`, `youtube_video`, `youtube_transcript`): comments are short posts and keep the normal 40-1500 character window. A video gives two kinds of item: its description, and the start of its transcript (spoken content, usually richer in claims than the promo-heavy description; the transcript's own language column is used). Unlike other sources, over-long descriptions/transcripts are not dropped: they are cut to the cap at the nearest sentence end at or after 60% of the cap (`ann_trunc_min_frac`; abbreviations such as "Mr." and initials are not sentence ends), else at a line break, else at a word boundary. The stored text is a verbatim prefix, so offsets stay valid, and `item.meta.truncated` records how it was cut (`sentence|line|word|hard`). Both items of one video share a split group (`dup_key`) so they never straddle train and validation. Auto-captions often have no punctuation, so many transcripts end on a word boundary.
+
+* **newest**: watermark `(scraped_at, pk)` per source in `annot.ingest_watermark`. Each run reads rows newer than the watermark minus a lookback (`ann_lookback_hours`) so late-arriving rows are caught; duplicates are dropped by `UNIQUE(source, pk)` and `UNIQUE(norm_hash)`. If a run is capped by `--per-source` the skipped gap is reachable via backfill.
+* **backfill**: random `TABLESAMPLE` over the whole table or a `--since/--until` window, round-robin over months.
+* Both modes apply length/quality filters, language quotas (`ann_share_*`), and set the deterministic `is_double` / `is_blind` flags.
+* Annotators are **not** served items in ingest order: batches are built by `batching.build_batch` (see above).
+
+## Labels
+* **Claims**: select a span, choose one of 9 forms (`DIRECT_STATEMENT`, `REPORTED_OR_REQUOTED_STATEMENT`, `ALLEGATION_OR_ACCUSATION`, `PREDICTION_OR_FORECAST`, `QUESTION_WITH_IMPLICIT_CLAIM`, `DENIAL_OR_COUNTERCLAIM`, `PARAPHRASED_STATEMENT`, `OTHER`, `UNCLEAR`), and **separately** check-worthy yes / no / unsure; optional normalised claim and speaker. The taxonomy is the table `annot.taxonomy_claim_type` (edit rows to change it).
+* **Propaganda**: select a span, choose one or more of the 14 merged PTC classes (the ones the Laya span encoder is trained on; `ptc18_members` records the merge). Spans may overlap.
+* The two layers are separate tables, separate UI tabs, separately submitted. Each layer must end in `annotated` (>=1 span) or an explicit `none` ("No claims" / "No propaganda"). Editing after submitting re-opens the layer.
+* Offsets are **Unicode code points** into the immutable `item.text` (= Python `str` indices; the browser converts from UTF-16). `item.text` is protected by a trigger; for news `text = title + "\n\n" + body` (`title_len` says where the body starts).
+* History: every create/edit/delete/accept/reject/submit/skip is an append-only row in `annot.label_event` (before/after JSON; update/delete blocked by trigger).
+
+## Annotators, double annotation, blind items
+Roles live in the DB (annotator | adjudicator | admin). 20% of items (`ann_double_frac`) go to two different annotators; 10% (`ann_blind_frac`) show no model suggestions (anchoring-bias check: compare accept rates on blind vs non-blind items from `label_event`). Annotators never see whether an item is double.
+
+## Exports (`scripts/30_annot_export.py`, `fnp/annotate/export.py`)
+Written once per version to `data/annotation/exports/<version>/` and recorded in `annot.export_run` / `export_split`; never overwritten.
+* `canonical.jsonl` (all resolved items, offsets, source metadata, annotator provenance), `disputed.jsonl`, `invalid.jsonl`, `agreement.json`, `label_map.json`, `manifest.json` (counts, sha256 of every file, config).
+* **Claims**: `claims_sft_{train,dev,test}.jsonl` in the same chat format as `claimExtraction/data/minio/claims-data` (target = verbatim spans of check-worthy claims; `normalised` claims and types ride along in `extra_info`).
+* **Propaganda**: `spans_ptc_style_{split}.jsonl` (`[start, end, technique]` per technique) and `export.load_export_spans()` returning DataFrames shaped like `fnp.datasets.load_ptc`, so `scripts/23_train_span_encoder.py` can concatenate them with PTC.
+* **Gold rule**: adjudicator wins; single annotator as is; double items under `agree` keep only spans both marked (IoU >= 0.5, same technique for propaganda), taking the lowest annotator's boundaries; an item where one annotator marked something the other did not is *disputed* and kept out of train/dev/test (use `--policy union` to keep it).
+* **Splits** are by near-duplicate group (`item.dup_key` = first 12 normalised words), deterministic in `(version, dup_key)`, so a repost never straddles splits.
+* **Agreement** (double items): item-level kappa with bootstrap CI and Wilson CI on raw agreement; claims: span F1 at IoU 0.5, kappa of claim type and check-worthiness on matched spans; propaganda: SemEval-style SI / TC-span F1 and per-technique F1.
+
+## Assumptions to review
+Registered in `docs/review/02_ASSUMPTIONS_REGISTER.md` (`ann_*`): length bounds, language shares, batch size, 50k target, balance sampling, idle window, lookback, double/blind fractions, split shares. Known limits: the near-duplicate key only catches reposts whose first 12 words match; the claim-type mapping from the existing L1 schema to the new forms is a heuristic used only to pre-fill suggestions (`preannotate.map_claim_type`); the shared `FNP_ANNOT_DB_*` role is not per-annotator.
+
+## Pool hygiene, selection provenance, quality control (migration 004)
+
+**Duplicates.** Every item has `body_key`, the near-duplicate key of its body text (title excluded; first 12 words after RT / URL / mention removal). Ingest drops a candidate whose key already exists (also in the same run), and `scripts/33_annot_dedupe.py [--apply]` cleans the existing pool: one item is kept per group (an item already in somebody's batch first, then one with a model pass, then the earliest), the rest become `status='excluded'` with `excluded_reason='near_duplicate_of:<id>'`. Link-only / mention-only items (fewer than `ann_min_substance_chars` letters left) are excluded as `low_substance`. Nothing is deleted and assigned items are never touched; excluded items keep their key, so the same repost is not ingested again. `item.dup_key` remains the train/dev/test split group.
+
+**Skips.** A skip returns the item to the pool. When `ann_skip_exclude_n` (2) *different* annotators skipped it for a content reason (unreadable, spam, offensive, other) it is excluded (`skipped_by_2_annotators`) and unstarted copies in other batches are released. "Language I cannot annotate" never counts: it says something about the annotator, not the item.
+
+**Targets and imbalance.** The nominal target (50k items; 5,714 per claim type; 2,857 per technique) cannot be met for rare classes: the models predict some classes rarely (prediction, thought-terminating clichés, slogans, appeal to authority) and the claim-type mapper emits only four types. Steering therefore uses `metrics.feasible_targets`: min(target, finished + `ann_target_supply_frac` x the pool items the models predict for the class, scaled by how much of the pool the model has seen). A class the models never predict is not steered towards. The imbalance that remains is accepted and corrected in training by class weights (below). The Coverage tab shows both the nominal target and "steered to".
+
+**Selection provenance.** Every assignment records how it was chosen: `selected_by` (`steered`, `random`, `gold`, `adjudication`; NULL = built before migration 004), `sel_score` and `sel_meta` (predicted labels used, cell). `ann_random_frac` (10%) of each batch is a random candidate of its cell, not steered: the unbiased slice for evaluation. Steered selection distorts class prevalence, so metrics that should reflect the data distribution must be computed on the random slice only.
+
+**Exports** (`scripts/30_annot_export.py`) now carry per record: `provenance.assisted` (suggestions were shown; False for blind items), `provenance.selection`, `sample_weight`. Extra files: `class_weights.json` (effective-number weights, Cui et al. 2019, beta `ann_cb_beta`, computed on the **train split only**; per-record weight = that of its rarest class, `__none__` for explicit negatives), `canonical_blind.jsonl`, `canonical_random.jsonl` (the unbiased evaluation material) and `assistance_effect.json` (blind vs assisted none-rate, spans per item, share of spans taken from suggestions: a direct anchoring check). `--only blind|random` restricts a whole export to one of them. Gold submissions are never exported; an adjudication wins over the two annotators.
+
+**Adjudication.** Double items whose annotators disagree are DISPUTED and stay out of exports. Admin / adjudicator tab *Disputes*: open an item (the normal annotation screen plus both annotators' labels), copy one side as a starting point, edit, submit both layers; the result is policy `adjudicated`. An adjudicator cannot adjudicate an item they annotated themselves.
+
+**Gold and quality.** On an adjudicated item, *Use as gold* freezes the labels as reference (`gold_item`). `ann_gold_frac` (3%) of every batch are gold items, served blind inside normal batches (the annotator cannot tell), each annotator at most once per item; their labels are scored (span F1 at IoU 0.5, technique must match; claim-type accuracy on matched spans) and never exported. The *Quality* tab also shows agreement with partners on double items, median seconds per item, none-share against the team median and suggestion accept rate, with flags (thresholds in `config.py`). Flags prompt a human to look; they are not verdicts. Gold needs adjudicated items first: until the first disputes are resolved there is no gold, and nothing is inserted.
