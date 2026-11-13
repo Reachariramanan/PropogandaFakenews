@@ -1,0 +1,44 @@
+# Hydra config for grpo/run_gspo_vigor.py.
+#
+# This is VERL's stock `ppo_trainer` config with one extra top-level `vigor`
+# node bolted on. Composing it this way (rather than pointing @hydra.main
+# straight at verl/trainer/config) means the VIGOR knobs are *real* config
+# keys, so the CLI accepts `vigor.alpha=0.7` without the `+` prefix that Hydra
+# otherwise requires for keys absent from the schema. Every stock override
+# (`actor_rollout_ref.*`, `trainer.*`, `data.*`, ...) keeps working unchanged.
+#
+# `pkg://verl.trainer.config` resolves through the installed `verl` package, so
+# this file carries no hard-coded absolute path to the vendored checkout.
+
+defaults:
+  - ppo_trainer
+  - _self_
+
+vigor:
+  # Rollouts per prompt in round 0.
+  m0: 2
+  # Number of VIGOR rounds per training step.
+  T: 4
+  # Rollout-count growth factor applied to survivors each round.
+  gamma: 2.0
+  # Fraction of the *current* active set kept each round (ceil).
+  alpha: 0.5
+
+  # Where the scalar reward used for the variance ranking comes from.
+  #   auto   - use the `rm_scores` the agent loop already computed with
+  #            reward.custom_reward_function (i.e. grpo/reward_ie.py::compute_score)
+  #            when present; otherwise score on the driver with compute_score.
+  #   direct - always decode + call grpo/reward_ie.py::compute_score on the driver.
+  #   rm     - require `rm_scores`; hard error if the rollout did not produce it.
+  # `auto` is the safe default: it guarantees the reward that drives VIGOR's
+  # selection is bit-identical to the reward that ends up in token_level_scores.
+  score_source: auto
+
+  # Import path of the driver-side scoring function used by `direct`/`auto`
+  # fallback. Must have signature
+  # (data_source, solution_str, ground_truth, extra_info=None) -> float.
+  score_fn: grpo.reward_ie.compute_score
+
+hydra:
+  searchpath:
+    - pkg://verl.trainer.config

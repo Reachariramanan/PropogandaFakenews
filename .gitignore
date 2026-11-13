@@ -1,0 +1,26 @@
+# secrets (keep only the template)
+.env*
+!.env.example
+# environments / caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# corpus-derived data and models stay out of git
+/data/
+/logs/
+reports/prop_lab*/
+reports/triage*/
+reports/*.json
+reports/*.jsonl
+reports/*.csv
+*.duckdb
+*.duckdb.wal
+*.parquet
+*.safetensors
+*.pt
+*.tmp
+# training datasets and model checkpoints (kept out of git; only the training code under claimExtraction/data/minio/*/code is versioned)
+/claimExtraction/data/minio/claims-data/
+/claimExtraction/data/minio/*/rl_checkpoint/
+/claimExtraction/data/minio/*/sft_checkpoint/
